@@ -1,9 +1,9 @@
 # WApi: Web-Library for Python
 
 
-> ### Libraries used:
- >* [jsons](https://github.com/ramonhagenaars/jsons)
- >* [requests]() 
+ ### Libraries used:
+* [jsons](https://github.com/ramonhagenaars/jsons)
+* [requests]() 
 
 ## • Routes 
 
