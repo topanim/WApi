@@ -1,7 +1,7 @@
 # WApi: Web-Library for Python
 
 
- ## Libraries used:
+## Libraries used:
 * [jsons](https://github.com/ramonhagenaars/jsons)
 * [requests]() 
 
