@@ -13,12 +13,12 @@ class WApi:
 @Route("/wapi")
 class Service:
 
-	@Route("/path")
-	@GET("/")
-	def get(self): pass	
+  @Route("/path")
+  @GET("/")
+  def get(self): pass	
 
-    @POST("/path")
-    def post(self): pass
+  @POST("/path")
+  def post(self): pass
 ```
 
 ```python 
@@ -97,8 +97,8 @@ class WApi:
 
 @dataclass
 class Person:
-    name: str
-	age: int  
+  name: str
+  age: int  
 
 
 @Route("https://example.com")
