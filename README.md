@@ -43,11 +43,11 @@ class Person:
 @Route("https://example.com")
 class WApi:
 
-	@GET("/person", _T=Person)
-	def person(self) -> Person: pass
-	
-	@GET("/people", _T=List[Person])
-	def people(self) -> List[Person]: pass
+  @GET("/person", _T=Person)
+  def person(self) -> Person: pass
+
+  @GET("/people", _T=List[Person])
+  def people(self) -> List[Person]: pass
 
 ```
 
