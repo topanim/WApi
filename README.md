@@ -67,8 +67,8 @@ print(person.name)
 @Route("https://example.com")
 class WApi:
 
-	@GET("/path?name={name}")
-	def route(self, name: str): pass
+  @GET("/path?name={name}")
+  def route(self, name: str): pass
 ```
 
 
@@ -83,8 +83,8 @@ class WApi:
 @Route("https://example.com")
 class WApi:
 
-	@GET("/path", auto=True) # eq /path?name={name}
-	def route(self, name: str): pass
+  @GET("/path", auto=True) # eq /path?name={name}
+  def route(self, name: str): pass
 ```
 
 ### •• Unpacking
@@ -104,6 +104,6 @@ class Person:
 @Route("https://example.com")
 class WApi:
 
-	@GET("/path", auto=True, unpacking=True) # eq /path?name={name}&age={age}
-	def route(self, body: Person): pass
+  @GET("/path", auto=True, unpacking=True) # eq /path?name={name}&age={age}
+  def route(self, body: Person): pass
 ```
