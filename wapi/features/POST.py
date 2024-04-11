@@ -3,8 +3,8 @@ from functools import wraps
 from jsons import load, dump
 from requests import Response, post
 
-from static.T import T
-from utils.get_path import get_path
+from wapi.static.T import T
+from wapi.utils.get_path import get_path
 
 
 def POST(

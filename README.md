@@ -1,9 +1,18 @@
 # WApi: Web-Library for Python
 
 
-> ### Libraries used:
- >* [jsons](https://github.com/ramonhagenaars/jsons)
- >* [requests]() 
+ ## Libraries used:
+* [jsons](https://github.com/ramonhagenaars/jsons)
+* [requests]() 
+
+
+## Installation
+
+ You can install the latest version with the command:
+ 
+```commandline
+pip install whaox-wapi
+```
 
 ## • Routes 
 
@@ -35,7 +44,7 @@ requests.get("https://example.com/wapi/path/")
 
 ## • Serialization 
 
-> The library deserializes the received data according to the type that you specify in the \_T parameter of the decorator. 
+> The library deserializes the received data according to the type that you specify in the _T parameter of the decorator. 
 > 
 > NOTE: The specified type must be json serializable - these are the base types and classes marked with the @dataclass annotation
 
