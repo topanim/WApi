@@ -1,9 +1,18 @@
 # WApi: Web-Library for Python
 
 
-> ### Libraries used:
- >* [jsons](https://github.com/ramonhagenaars/jsons)
- >* [requests]() 
+## Libraries used:
+* [jsons](https://github.com/ramonhagenaars/jsons)
+* [requests]() 
+
+
+## Installation
+
+ You can install the latest version with the command:
+ 
+```commandline
+pip install whaox-wapi
+```
 
 ## • Routes 
 
