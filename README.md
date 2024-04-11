@@ -1,5 +1,10 @@
 # WApi: Web-Library for Python
 
+
+> ### Libraries used:
+ >* [jsons](https://github.com/ramonhagenaars/jsons)
+ >* [requests]() 
+
 ## • Routes 
 
 > You can create paths as you like, splitting your client into modules
@@ -72,7 +77,7 @@ class WApi:
 ```
 
 
-### •• Auto-complete
+### • • Auto-complete
 
 > If you want the parameters to be set automatically, you can switch the auto flag to True.
 > 
@@ -87,11 +92,11 @@ class WApi:
   def route(self, name: str): pass
 ```
 
-### •• Unpacking
+### • • Unpacking
 
-> In order not to pass a lot of parameters, you can pass one by calling it body, it will automatically decompose into parameters, to do this, set the unpacking flag to True.
+> In order not to pass a lot of parameters, you can pass one by calling it body, it will automatically decompose into parameters, to do this, set the unpack flag to True.
 > 
-> NOTE:  Nested non-standard type parameters are not decomposed.
+> NOTE: Nested non-standard type parameters are not decomposed.
 
 ```python
 
@@ -104,6 +109,6 @@ class Person:
 @Route("https://example.com")
 class WApi:
 
-  @GET("/path", auto=True, unpacking=True) # eq /path?name={name}&age={age}
+  @GET("/path", auto=True, unpack=True) # eq /path?name={name}&age={age}
   def route(self, body: Person): pass
 ```
