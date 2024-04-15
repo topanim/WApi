@@ -17,11 +17,11 @@ def GET(
     def decorator(func):
         @wraps(func)
         def wrapper(self, *args, **kwargs):
-            headers = kwargs.pop("headers")
+            headers = kwargs.pop("headers", None)
             p = get_path(self, func, path)
 
             if auto:
-                if unpack and (body := kwargs.pop('body')):
+                if unpack and (body := kwargs.pop('body', None)):
                     kwargs.update(body)
 
                 url = p + "?" + "&".join([f'{k}={v}' for k, v in kwargs.items()])

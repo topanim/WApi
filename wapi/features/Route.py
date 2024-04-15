@@ -1,7 +1,7 @@
 from functools import wraps
 from typing import Type
 
-from webapi.utils.is_class import is_class
+from wapi.utils.is_class import is_class
 
 
 def Route(path: str):

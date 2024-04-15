@@ -1,5 +1,6 @@
 # WApi: Web-Library for Python
 
+[![PyPI version](https://badge.fury.io/py/whaox-wapi.svg)](https://badge.fury.io/py/whaox-wapi)
 
 ## Libraries used:
 * [jsons](https://github.com/ramonhagenaars/jsons)

@@ -14,10 +14,10 @@ def POST(
     def decorator(func):
         @wraps(func)
         def wrapper(self, **kwargs):
-            headers = kwargs.pop('headers')
+            headers = kwargs.pop('headers', None)
             data = dict()
 
-            if body := dump(kwargs.pop('body')):
+            if body := dump(kwargs.pop('body', None)):
                 data.update(body)
 
             if not kwargs:
