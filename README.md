@@ -1,3 +1,4 @@
+
 # WApi: Web-Library for Python
 
 [![PyPI version](https://badge.fury.io/py/whaox-wapi.svg)](https://badge.fury.io/py/whaox-wapi)
@@ -6,7 +7,13 @@
 * [jsons](https://github.com/ramonhagenaars/jsons)
 * [requests]() 
 
+## Features
 
+* Routes
+* Serialization
+* Params
+	* Auto-Complete
+	* Unpaking
 ## Installation
 
  You can install the latest version with the command:
@@ -15,7 +22,7 @@
 pip install whaox-wapi
 ```
 
-## • Routes 
+## • Routes #routes
 
 > You can create paths as you like, splitting your client into modules
 
@@ -43,7 +50,7 @@ wapi.service.get()
 requests.get("https://example.com/wapi/path/")
 ```
 
-## • Serialization 
+## • Serialization
 
 > The library deserializes the received data according to the type that you specify in the \_T parameter of the decorator. 
 > 
