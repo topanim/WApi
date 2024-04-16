@@ -22,7 +22,7 @@
 pip install whaox-wapi
 ```
 
-## • Routes #routes
+## • Routes
 
 > You can create paths as you like, splitting your client into modules
 
