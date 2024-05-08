@@ -20,10 +20,7 @@ def POST(
             if body := dump(kwargs.pop('body', None)):
                 data.update(body)
 
-            if not kwargs:
-                data.update(kwargs)
-
-            url = get_path(self, func, path)
+            url = get_path(self, func, path).format(**kwargs)
             response = post(url, json=data, headers=headers)
 
             if _T is None:

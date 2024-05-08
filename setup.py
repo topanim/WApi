@@ -9,7 +9,7 @@ from setuptools import setup, find_packages
 :copyright: (c) 2024 WHAOX
 """
 
-version = '1.0.28'
+version = '1.0.29'
 
 with open('README.md', encoding='utf-8') as f:
     long_description = f.read()
