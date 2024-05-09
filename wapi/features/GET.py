@@ -19,14 +19,12 @@ def GET(
         def wrapper(self, *args, **kwargs):
             headers = kwargs.pop("headers", None)
             p = get_path(self, func, path)
-
+            url = p.format(*args, **kwargs)
             if auto:
                 if unpack and (body := kwargs.pop('body', None)):
                     kwargs.update(body)
 
-                url = p + "?" + "&".join([f'{k}={v}' for k, v in kwargs.items()])
-            else:
-                url = p.format(*args, **kwargs)
+                url += "?" + "&".join([f'{k}={v}' for k, v in kwargs.items()])
 
             response = get(url, headers=headers)
 
