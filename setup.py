@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 from io import open
+
 from setuptools import setup, find_packages
 
 """
@@ -9,7 +10,7 @@ from setuptools import setup, find_packages
 :copyright: (c) 2024 WHAOX
 """
 
-version = '1.0.28'
+version = '1.1.0'
 
 with open('README.md', encoding='utf-8') as f:
     long_description = f.read()
@@ -32,5 +33,16 @@ setup(
     packages=find_packages(),
     install_requires=['jsons', 'requests'],
 
-    keywords=['python', 'web', 'api', 'requests', 'post', 'get']
+    keywords=[
+        'python',
+        'web',
+        'api',
+        'requests',
+        'post',
+        'get',
+        'put',
+        'patch',
+        'delete',
+        'rest'
+    ]
 )

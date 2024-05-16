@@ -8,7 +8,7 @@ from wapi.static.methods import HTTPMethod
 from wapi.utils.get_path import get_path
 
 
-def GET(
+def DELETE(
         path: str = "",
         _T: T = None
 ) -> T | Response:
@@ -19,11 +19,11 @@ def GET(
 
             return make_request(
                 url=p,
-                method=HTTPMethod.GET,
+                method=HTTPMethod.DELETE,
                 _T=_T,
                 data=kwargs
             )
+
         return wrapper
 
     return decorator
-
