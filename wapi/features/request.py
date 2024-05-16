@@ -15,14 +15,15 @@ def make_request(
         data: dict = None,
 ):
     headers: dict = data.pop(RequestParams.HEADERS, None)
-    params: dict = data.pop(RequestParams.PARAMS, None)
     files: dict = data.pop(RequestParams.FILES, None)
     cookies: dict = data.pop(RequestParams.COOKIES, None)
     redirect: bool = data.pop(RequestParams.REDIRECT, True)
-    if is_dataclass(
-            body := data.pop(RequestParams.BODY, None)
-    ):
+
+    if is_dataclass(body := data.pop(RequestParams.BODY, None)):
         body = asdict(body)
+
+    if is_dataclass(params := data.pop(RequestParams.PARAMS, None)):
+        params = asdict(body)
 
     if params is not None:
         used_params = get_used_vars(url, params)
