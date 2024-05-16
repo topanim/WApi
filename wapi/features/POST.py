@@ -1,9 +1,10 @@
 from functools import wraps
 
-from jsons import load, dump
-from requests import Response, post
+from requests import Response
 
+from wapi.features.request import make_request
 from wapi.static.T import T
+from wapi.static.methods import HTTPMethod
 from wapi.utils.get_path import get_path
 
 
@@ -14,18 +15,14 @@ def POST(
     def decorator(func):
         @wraps(func)
         def wrapper(self, **kwargs):
-            headers = kwargs.pop('headers', None)
-            data = dict()
+            p = get_path(self, func, path)
 
-            if body := dump(kwargs.pop('body', None)):
-                data.update(body)
-
-            url = get_path(self, func, path).format(**kwargs)
-            response = post(url, json=data, headers=headers)
-
-            if _T is None:
-                return response
-            return load(response.json(), _T)
+            return make_request(
+                url=p,
+                method=HTTPMethod.POST,
+                _T=_T,
+                data=kwargs
+            )
 
         return wrapper
 
