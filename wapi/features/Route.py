@@ -19,9 +19,12 @@ def Route(path: str):
 
         @wraps(obj)
         def func_wrapper(self, *args, **kwargs):
-            if hasattr(obj.__wrapped__, 'path'):
-                obj.__wrapped__.path = path + obj.__wrapped__.path
-            else:
+            # if hasattr(obj.__wrapped__, 'path'):
+            #     obj.__wrapped__.path = path + obj.__wrapped__.path
+            # else:
+            #     obj.__wrapped__.path = path
+
+            if not hasattr(obj.__wrapped__, 'path'):
                 obj.__wrapped__.path = path
 
             return obj(self, *args, **kwargs)
