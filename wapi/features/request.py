@@ -23,7 +23,7 @@ def make_request(
         body = asdict(body)
 
     if is_dataclass(params := data.pop(RequestParams.PARAMS, None)):
-        params = asdict(body)
+        params = asdict(params)
 
     if params is not None:
         used_params = get_used_vars(url, params)
