@@ -3,4 +3,3 @@ def get_used_vars(path: str, params: dict) -> list[str]:
     used_keys = [key for key in keys_in_string if key in params]
 
     return used_keys
-

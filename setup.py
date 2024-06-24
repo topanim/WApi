@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 from io import open
 
 from setuptools import setup, find_packages
@@ -10,7 +8,7 @@ from setuptools import setup, find_packages
 :copyright: (c) 2024 WHAOX
 """
 
-version = '1.1.4'
+version = '1.1.5'
 
 with open('README.md', encoding='utf-8') as f:
     long_description = f.read()
@@ -30,7 +28,7 @@ setup(
 
     license='MIT LICENSE, see LICENSE file',
 
-    packages=find_packages(),
+    packages=find_packages(exclude="examples"),
     install_requires=['jsons', 'requests'],
 
     keywords=[
