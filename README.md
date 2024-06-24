@@ -1,19 +1,21 @@
 
-# WApi: Web-Library for Python
+# WApi: Library to simplify api development
 
 [![PyPI version](https://badge.fury.io/py/whaox-wapi.svg)](https://badge.fury.io/py/whaox-wapi)
 
 ## Libraries used:
 * [jsons](https://github.com/ramonhagenaars/jsons)
-* [requests](https://github.com/psf/requests) 
+* [requests](https://github.com/psf/requests)
+* [aiohttp](https://github.com/aio-libs/aiohttp)
 
 ## Features
 
 * Routes
 * Serialization
-* Params
-	* Auto-Complete
-	* Unpaking
+* Asynchrony
+* Request Params
+	* Smart substitution
+
 ## Installation
 
  You can install the latest version with the command:
@@ -24,7 +26,7 @@ pip install whaox-wapi
 
 ## • Routes
 
-> You can create paths as you like, splitting your client into modules
+> You can create paths as you like, splitting your api-client into modules
 
 ```python
 
@@ -47,20 +49,20 @@ class Service:
 wapi = WApi()
 wapi.service.get()
 # eq
-requests.get("https://example.com/wapi/path/")
+requests.get("https://example.com/wapi/path")
 ```
 
 ## • Serialization
 
-> The library deserializes the received data according to the type that you specify in the \_T parameter of the decorator. 
+> The library deserializes the received data according to the type that you specify in the `_T` parameter of the decorator. 
 > 
-> NOTE: The specified type must be json serializable - these are the base types and classes marked with the @dataclass annotation
+> NOTE: The specified type must be json serializable - these are the base types and classes marked with the `@dataclass` annotation
 
 ```python
 
 @dataclass
 class Person:
-	name: str
+  name: str
 
 @Route("https://example.com")
 class WApi:
@@ -81,51 +83,77 @@ print(person.name)
 >>> "John"
 ```
 
-## • Params
+## • Asynchrony
 
-> You can flexibly add parameters to the path using {}. The library uses formatting from the standard library.
+> You can make the query asynchronous simply by adding an `async` keyword.
 
 ```python
 @Route("https://example.com")
 class WApi:
 
-  @GET("/path?name={name}")
-  def route(self, name: str): pass
+  @GET("/person")
+  async def person(self): pass
+
+```
+```python
+person = await api.person(params={"id": 1})
 ```
 
+## • Request Params
 
-### • • Auto-complete
-
-> If you want the parameters to be set automatically, you can switch the auto flag to True.
-> 
-> NOTE: if auto=True, you must pass named parameters so that they are added to the path.
+> You can flexibly add parameters to request passing relevant attributes.
 
 ```python
-
-@Route("https://example.com")
-class WApi:
-
-  @GET("/path", auto=True) # eq /path?name={name}
-  def route(self, name: str): pass
-```
-
-### • • Unpacking
-
-> In order not to pass a lot of parameters, you can pass one by calling it body, it will automatically decompose into parameters, to do this, set the unpack flag to True.
-> 
-> NOTE: Nested non-standard type parameters are not decomposed.
-
-```python
-
 @dataclass
-class Person:
+class GetPersonRequest:
+  id: int
+  
+@dataclass
+class CreatePersonRequest:
   name: str
-  age: int  
 
 
 @Route("https://example.com")
 class WApi:
 
-  @GET("/path", auto=True, unpack=True) # eq /path?name={name}&age={age}
-  def route(self, body: Person): pass
+  @POST("/person")
+  def create_person(self, body: dict): pass
+	
+  @Route("/person") 
+  @GET("/")
+  def person(self, params: GetPersonRequest | dict): pass
+
 ```
+```python
+api.person(params={"id": 1})
+api.create_person(body={"name": "john"})
+# or
+api.person(params=GetPersonRequest(1))
+api.create_person(params=CreatePersonRequest("john"))
+```
+
+
+### • • Smart substitution
+
+> The library understands what variables you used during formatting and will not substitute them into the path parameters.
+
+```python
+@dataclass
+class GetPersonRequest:
+    id: int
+    preview: bool
+
+@Route("https://example.com")
+class WApi:
+
+  @Route("/person")
+  @GET("/{id}")
+  def person(self, params: GetPersonRequest): pass
+```
+
+```python
+person = api.person(params=GetPersonRequest(1, true))
+# eq
+person = requests.get("https://example.com/person/1?preview=true")
+```
+
