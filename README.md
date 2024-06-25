@@ -117,7 +117,7 @@ class CreatePersonRequest:
 class WApi:
 
   @POST("/person")
-  def create_person(self, body: dict): pass
+  def create_person(self, body: CreatePersonRequest | dict): pass
 	
   @Route("/person") 
   @GET("/")
@@ -129,7 +129,7 @@ api.person(params={"id": 1})
 api.create_person(body={"name": "john"})
 # or
 api.person(params=GetPersonRequest(1))
-api.create_person(params=CreatePersonRequest("john"))
+api.create_person(body=CreatePersonRequest("john"))
 ```
 
 
