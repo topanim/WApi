@@ -8,7 +8,7 @@ from setuptools import setup, find_packages
 :copyright: (c) 2024 WHAOX
 """
 
-version = '1.1.5'
+version = '1.1.6'
 
 with open('README.md', encoding='utf-8') as f:
     long_description = f.read()
@@ -36,6 +36,7 @@ setup(
         'web',
         'api',
         'requests',
+        'aiohttp',
         'post',
         'get',
         'put',

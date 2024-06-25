@@ -1,0 +1,6 @@
+aiohttp~=3.9.3
+requests~=2.31.0
+jsons~=1.6.3
+asyncio~=3.4.3
+colorama~=0.4.6
+setuptools~=69.0.3

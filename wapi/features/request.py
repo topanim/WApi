@@ -27,7 +27,7 @@ def make_request(
     )
 
     if _T is None:
-        return data
+        return response
     return load(response.json(), _T)
 
 
@@ -43,7 +43,7 @@ async def async_make_request(
                 **get_common_request_params(data, url)
         ) as response:
             if _T is None:
-                return data
+                return response
             return load(await response.json(), _T)
 
 
