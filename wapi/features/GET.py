@@ -1,6 +1,7 @@
 import inspect
 from functools import wraps
 
+from aiohttp import ClientResponse
 from requests import Response
 
 from wapi.features.request import make_request, async_make_request
@@ -12,10 +13,10 @@ from wapi.utils.get_path import get_path
 def GET(
         path: str = "",
         _T: T = None
-) -> T | Response:
+):
     def decorator(func):
         @wraps(func)
-        def sync_wrapper(self, *args, **kwargs):
+        def sync_wrapper(self, *args, **kwargs) -> T | Response:
             p = get_path(self, func, path)
 
             return make_request(
@@ -26,7 +27,7 @@ def GET(
             )
 
         @wraps(func)
-        async def async_wrapper(self, *args, **kwargs):
+        async def async_wrapper(self, *args, **kwargs) -> T | ClientResponse:
             p = get_path(self, func, path)
 
             return await async_make_request(

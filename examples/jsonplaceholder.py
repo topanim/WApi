@@ -2,6 +2,8 @@ import asyncio
 from dataclasses import dataclass
 from typing import List
 
+from colorama import Fore
+
 from wapi import Route, GET, POST
 
 
@@ -35,13 +37,30 @@ class PostService:
 
 async def main():
     postService = PostService()
+
     print(
-        "sync_request's response:",
-        sync_request(postService),
-        "",
-        "async_request's response:",
-        await async_request(postService),
-        sep="\n"
+        Fore.GREEN + "create_post's response:",
+        Fore.WHITE, create_post(postService)
+    )
+
+    print(
+        Fore.YELLOW + "sync_request's response:",
+        Fore.WHITE, sync_request(postService)
+    )
+
+    print(
+        Fore.RED + "async_request's response:",
+        Fore.WHITE, await async_request(postService)
+    )
+
+
+def create_post(postService: PostService):
+    return postService.create(
+        body=CreatePostRequest(
+            userId=1,
+            title="foo",
+            body="bar"
+        )
     )
 
 
