@@ -129,7 +129,7 @@ api.person(params={"id": 1})
 api.create_person(body={"name": "john"})
 # or
 api.person(params=GetPersonRequest(1))
-api.create_person(params=CreatePersonRequest("john"))
+api.create_person(body=CreatePersonRequest("john"))
 ```
 
 
